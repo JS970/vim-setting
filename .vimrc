@@ -62,12 +62,15 @@ call vundle#end()
 " set nu
 autocmd BufEnter * set nu
 
+" ctags
+set tags=./tags
+
 " Plugin configurations
 " NERDTree
 " Exit Vim if NERDTree is the only window remaining in the only tab.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 " NERDTree key mapping
-nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-a> :NERDTreeToggle<CR>
 
 " Syntastic
 set statusline+=%#warningmsg#
@@ -78,6 +81,14 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+" vim-airline
+let g:airline#extensions#tabline#enabled = 1  
+let g:airline#extensions#tabline#fnamemod = ':t'     
+let g:airline#extensions#tabline#buffer_nr_show = 1    
+let g:airline#extensions#tabline#buffer_nr_format = '%s:'
+
+
 
 " Syntastic compiler options
 let g:syntastic_cpp_compiler = 'g++'
